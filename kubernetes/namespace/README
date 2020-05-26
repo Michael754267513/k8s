@@ -1,0 +1,6 @@
+# namespace
+
+##接口
+
+/kubernetes/namespace/list  # 获取所有命名空间
+ 

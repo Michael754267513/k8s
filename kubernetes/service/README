@@ -1,0 +1,7 @@
+# service
+
+##接口
+
+/kubernetes/service/list   # 获取所有deployment
+
+/kubernetes/service/list?namespace=default # 获取default 命名空间的deployment
