@@ -2,7 +2,6 @@ package initConfig
 
 import (
 	"io/ioutil"
-
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
@@ -42,3 +41,5 @@ func GetRestConf() (restConf *rest.Config, err error) {
 END:
 	return
 }
+
+//应用日志配置

@@ -20,6 +20,16 @@ type DeployStatus struct {
 	Message   error
 }
 
+// 定义更新deployment返回参数
+type UpdateDeployStatus struct {
+	Name      string
+	NameSpace string
+	Status    bool
+	Image     string
+	OldImage  string
+	Message   error
+}
+
 type Deploys struct {
 	Name                string
 	NameSpace           string
@@ -69,7 +79,38 @@ ERROR:
 }
 
 func (r *DeployMentController) Update() {
-
+	namespace := r.Request.GetString("namespace")
+	deployment := r.Request.GetString("deployment")
+	image := r.Request.GetString("image")
+	var (
+		clientset          *kubernetes.Clientset
+		updateDeployStatus UpdateDeployStatus
+		deployMeta         *apps_v1.Deployment
+		err                error
+	)
+	updateDeployStatus.Name = deployment
+	updateDeployStatus.NameSpace = namespace
+	if clientset, err = initConfig.InitClient(); err != nil {
+		updateDeployStatus.Message = err
+		goto ERROR
+	}
+	// 获取deployment相关信息
+	if deployMeta, err = clientset.AppsV1().Deployments(namespace).Get(deployment, meta_v1.GetOptions{}); err != nil {
+		updateDeployStatus.Message = err
+		goto ERROR
+	}
+	// 历史镜像
+	updateDeployStatus.OldImage = deployMeta.Spec.Template.Spec.Containers[0].Image
+	updateDeployStatus.Image = image
+	// 更新新增镜像配置
+	deployMeta.Spec.Template.Spec.Containers[0].Image = image
+	if deployMeta, err = clientset.AppsV1().Deployments(namespace).Update(deployMeta); err != nil {
+		updateDeployStatus.Message = err
+	} else {
+		updateDeployStatus.Status = true
+	}
+	r.Response.Write(updateDeployStatus)
+ERROR:
 }
 
 func (r *DeployMentController) Delete() {
@@ -83,6 +124,7 @@ func (r *DeployMentController) Delete() {
 	deployStatus.Name = deployment
 	deployStatus.NameSpace = namespace
 	if clientset, err = initConfig.InitClient(); err != nil {
+		deployStatus.Message = err
 		goto ERROR
 	}
 	if _, err = clientset.AppsV1().Deployments(namespace).Get(deployment, meta_v1.GetOptions{}); err != nil {
@@ -91,11 +133,10 @@ func (r *DeployMentController) Delete() {
 	}
 	if err = clientset.AppsV1().Deployments(namespace).Delete(deployment, &meta_v1.DeleteOptions{}); err != nil {
 		deployStatus.Message = err
-		r.Response.WriteJson(deployStatus)
 	} else {
 		deployStatus.Status = true
-		r.Response.WriteJson(deployStatus)
 	}
+	r.Response.WriteJson(deployStatus)
 ERROR:
 }
 
