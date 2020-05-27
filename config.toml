@@ -1,0 +1,8 @@
+[server]
+    LogPath           = "./logs"
+    LogStdout         = false
+    ErrorStack        = true
+    ErrorLogEnabled   = true
+    ErrorLogPattern   = "error.{Ymd}.log"
+    AccessLogEnabled  = true
+    AccessLogPattern  = "access.{Ymd}.log"

@@ -16,6 +16,10 @@ func MiddlewareCORS(r *ghttp.Request) {
 
 func init() {
 	s := g.Server()
+	s.SetConfigWithMap(g.Map{
+		"AccessLogEnabled": true,
+		"ErrorLogEnabled":  true,
+	})
 	s.Group("/kubernetes", func(group *ghttp.RouterGroup) {
 		group.Middleware(MiddlewareCORS) // 跨域处理
 		// pod 处理段

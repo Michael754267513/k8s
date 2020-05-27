@@ -12,6 +12,14 @@ type DeployMentController struct {
 	gmvc.Controller
 }
 
+// 定义deploy删除返回
+type DeployStatus struct {
+	Name      string
+	NameSpace string
+	Status    bool
+	Message   error
+}
+
 type Deploys struct {
 	Name                string
 	NameSpace           string
@@ -60,3 +68,37 @@ ERROR:
 	r.Response.Write(err)
 }
 
+func (r *DeployMentController) Update() {
+
+}
+
+func (r *DeployMentController) Delete() {
+	namespace := r.Request.GetString("namespace")
+	deployment := r.Request.GetString("deployment")
+	var (
+		clientset    *kubernetes.Clientset
+		deployStatus DeployStatus
+		err          error
+	)
+	deployStatus.Name = deployment
+	deployStatus.NameSpace = namespace
+	if clientset, err = initConfig.InitClient(); err != nil {
+		goto ERROR
+	}
+	if _, err = clientset.AppsV1().Deployments(namespace).Get(deployment, meta_v1.GetOptions{}); err != nil {
+		deployStatus.Status = true
+		goto ERROR
+	}
+	if err = clientset.AppsV1().Deployments(namespace).Delete(deployment, &meta_v1.DeleteOptions{}); err != nil {
+		deployStatus.Message = err
+		r.Response.WriteJson(deployStatus)
+	} else {
+		deployStatus.Status = true
+		r.Response.WriteJson(deployStatus)
+	}
+ERROR:
+}
+
+func (r *DeployMentController) Create() {
+
+}

@@ -1,0 +1,21 @@
+2020-05-27 17:38:10.507 15888: http server started listening on [:80]
+
+  SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/create | k8s/kubernetes/deployment.(*DeployMentController).Create | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/delete | k8s/kubernetes/deployment.(*DeployMentController).Delete | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/list   | k8s/kubernetes/deployment.(*DeployMentController).List   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/list          | k8s/kubernetes/pod.(*podws.PodController).List           | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+
