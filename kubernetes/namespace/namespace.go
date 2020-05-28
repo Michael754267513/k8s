@@ -39,6 +39,6 @@ func (r *NameSpaceController) List() {
 	}
 	r.Response.WriteJson(resNameSpaceList)
 ERROR:
-	r.Response.Write(err)
+	initConfig.Logger(err)
 }
-
+func (r *NameSpaceController) Delete() {}

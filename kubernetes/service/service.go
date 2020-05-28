@@ -59,5 +59,27 @@ func (r *ServiceController) List() {
 	}
 	r.Response.WriteJson(resServiceList)
 ERROR:
-	r.Response.Write(err)
+	initConfig.Logger(err)
 }
+
+func (r *ServiceController) Delete() {
+	namespace := r.Request.GetString("namespace")
+	serviceName := r.Request.GetString("serviceName")
+	var (
+		clientset *kubernetes.Clientset
+		err       error
+	)
+	if clientset, err = initConfig.InitClient(); err != nil {
+		goto ERROR
+	}
+	if err = clientset.CoreV1().Services(namespace).Delete(serviceName, &meta_v1.DeleteOptions{}); err != nil {
+		goto ERROR
+	}
+	r.Response.Write(err)
+ERROR:
+	initConfig.Logger(err)
+}
+
+func (r *ServiceController) Create() {}
+
+func (r *ServiceController) Update() {}

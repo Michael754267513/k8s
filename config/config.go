@@ -1,7 +1,9 @@
 package initConfig
 
 import (
+	"fmt"
 	"io/ioutil"
+
 	"k8s.io/client-go/kubernetes"
 	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/clientcmd"
@@ -42,4 +44,6 @@ END:
 	return
 }
 
-//应用日志配置
+func Logger(err error) {
+	fmt.Println(err)
+}

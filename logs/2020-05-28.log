@@ -1,4 +1,3 @@
-2020-05-27 17:38:10.507 15888: http server started listening on [:80]
 
   SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
@@ -19,7 +18,8 @@
   default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
 
-2020-05-27 17:58:55.085 20828: http server started listening on [:80]
+2020-05-28 09:56:11.430 96380: http server started listening on [:80]
+2020-05-28 11:03:52.760 100064: http server started listening on [:80]
 
   SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
@@ -31,16 +31,24 @@
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/delete  | k8s/kubernetes/namespace.(*NameSpaceController).Delete   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/pod/list          | k8s/kubernetes/pod.(*podws.PodController).List           | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/create    | k8s/kubernetes/service.(*ServiceController).Create       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/delete    | k8s/kubernetes/service.(*ServiceController).Delete       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/update    | k8s/kubernetes/service.(*ServiceController).Update       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
 
-2020-05-27 18:10:04.371 21976: http server started listening on [:80]
+2020-05-28 11:10:16.162 103768: http server started listening on [:80]
 
   SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
@@ -52,15 +60,24 @@
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/delete  | k8s/kubernetes/namespace.(*NameSpaceController).Delete   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/pod/list          | k8s/kubernetes/pod.(*podws.PodController).List           | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/create    | k8s/kubernetes/service.(*ServiceController).Create       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/delete    | k8s/kubernetes/service.(*ServiceController).Delete       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/update    | k8s/kubernetes/service.(*ServiceController).Update       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
 
+2020-05-28 11:15:10.842 103036: http server started listening on [:80]
 
   SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
@@ -72,26 +89,7 @@
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-  default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
-|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-  default | default | :80     | ALL    | /kubernetes/pod/list          | k8s/kubernetes/pod.(*podws.PodController).List           | router.MiddlewareCORS  
-|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-  default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
-|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-  default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
-|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-
-2020-05-27 18:17:40.259 21244: http server started listening on [:80]
-
-  SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
-|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-  default | default | :80     | ALL    | /kubernetes/deployment/create | k8s/kubernetes/deployment.(*DeployMentController).Create | router.MiddlewareCORS  
-|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-  default | default | :80     | ALL    | /kubernetes/deployment/delete | k8s/kubernetes/deployment.(*DeployMentController).Delete | router.MiddlewareCORS  
-|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-  default | default | :80     | ALL    | /kubernetes/deployment/list   | k8s/kubernetes/deployment.(*DeployMentController).List   | router.MiddlewareCORS  
-|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
-  default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
+  default | default | :80     | ALL    | /kubernetes/namespace/delete  | k8s/kubernetes/namespace.(*NameSpaceController).Delete   | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
@@ -99,7 +97,12 @@
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/create    | k8s/kubernetes/service.(*ServiceController).Create       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/delete    | k8s/kubernetes/service.(*ServiceController).Delete       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
   default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
 |---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/update    | k8s/kubernetes/service.(*ServiceController).Update       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
 
-2020-05-27 18:28:04.760 21276: http server started listening on [:80]

@@ -2,7 +2,6 @@ package podws
 
 import (
 	"encoding/json"
-	"fmt"
 
 	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/frame/gmvc"
@@ -154,6 +153,6 @@ func (r *PodWSController) Websocket() {
 	return
 
 END:
-	fmt.Println(err)
+	initConfig.Logger(err)
 	_ = r.ws.Close()
 }

@@ -8,6 +8,10 @@ import (
 	initConfig "k8s/config"
 )
 
+//type DeployMent interface {
+//
+//}
+
 type DeployMentController struct {
 	gmvc.Controller
 }
@@ -73,9 +77,11 @@ func (r *DeployMentController) List() {
 		resDeployList = append(resDeployList, deploy)
 
 	}
-	r.Response.WriteJson(resDeployList)
+	if err = r.Response.WriteJson(resDeployList); err != nil {
+		goto ERROR
+	}
 ERROR:
-	r.Response.Write(err)
+	initConfig.Logger(err)
 }
 
 func (r *DeployMentController) Update() {
@@ -111,6 +117,7 @@ func (r *DeployMentController) Update() {
 	}
 	r.Response.Write(updateDeployStatus)
 ERROR:
+	initConfig.Logger(err)
 }
 
 func (r *DeployMentController) Delete() {
@@ -136,10 +143,18 @@ func (r *DeployMentController) Delete() {
 	} else {
 		deployStatus.Status = true
 	}
-	r.Response.WriteJson(deployStatus)
+	// 数据格式化json失败会抛出异常
+	if err = r.Response.WriteJson(deployStatus); err != nil {
+		goto ERROR
+	}
 ERROR:
+	initConfig.Logger(err)
 }
 
 func (r *DeployMentController) Create() {
+	/*
+		根据实际情况定义参数
+		https://github.com/kubernetes/client-go/blob/master/examples/dynamic-create-update-delete-deployment/main.go
+	*/
 
 }

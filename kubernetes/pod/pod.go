@@ -53,5 +53,5 @@ func (r *PodController) List() {
 	}
 	r.Response.WriteJson(resPodList)
 ERROR:
-	r.Response.Write(err)
+	initConfig.Logger(err)
 }
