@@ -5,6 +5,7 @@ go 1.14
 require (
 	github.com/davecgh/go-spew v1.1.1-0.20170626231645-782f4967f2dc // indirect
 	github.com/docker/spdystream v0.0.0-20181023171402-6480d4af844c // indirect
+	github.com/flosch/pongo2 v0.0.0-20200805083417-63c99409991d // indirect
 	github.com/gogf/gf v1.12.2
 	github.com/gogo/protobuf v0.0.0-20171007142547-342cbe0a0415 // indirect
 	github.com/google/btree v0.0.0-20160524151835-7d79101e329e // indirect

@@ -9,6 +9,7 @@ import (
 	"k8s.io/client-go/tools/clientcmd"
 )
 
+//
 // 初始化k8s客户端
 func InitClient() (clientset *kubernetes.Clientset, err error) {
 	var (
@@ -47,3 +48,27 @@ END:
 func Logger(err error) {
 	fmt.Println(err)
 }
+
+//
+//
+//func InitClient() (clientset *kubernetes.Clientset, err error) {
+//	config,_ := GetRestConf()
+//	clientset, err = kubernetes.NewForConfig(config)
+//	return clientset,err
+//}
+//
+//func GetRestConf() (restConf *rest.Config, err error) {
+//	var kubeconfig *string
+//	if home := homedir.HomeDir(); home != "" {
+//		kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
+//	} else {
+//		kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
+//	}
+//	flag.Parse()
+//
+//	config, err := clientcmd.BuildConfigFromFlags("", *kubeconfig)
+//	if err != nil {
+//		panic(err)
+//	}
+//	return config,err
+//}

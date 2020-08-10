@@ -1,5 +1,0 @@
-2020-05-28 11:12:59.853 200 "GET http 127.0.0.1 /kubernetes/service/list?namespace=default HTTP/1.1" 5.904, 127.0.0.1, "", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0"
-2020-05-28 11:13:12.765 500 "GET http 127.0.0.1 /kubernetes/service/delete?namespace=default HTTP/1.1" 0.002, 127.0.0.1, "", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0"
-2020-05-28 11:13:12.831 404 "GET http 127.0.0.1 /favicon.ico HTTP/1.1" 0.000, 127.0.0.1, "", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0"
-2020-05-28 11:15:23.529 200 "GET http 127.0.0.1 /kubernetes/service/delete?namespace=default HTTP/1.1" 0.003, 127.0.0.1, "", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0"
-2020-05-28 11:15:49.711 200 "GET http 127.0.0.1 /kubernetes/service/delete?namespace=default&serviceName=asda HTTP/1.1" 0.017, 127.0.0.1, "", "Mozilla/5.0 (Windows NT 10.0; WOW64; rv:56.0) Gecko/20100101 Firefox/56.0"

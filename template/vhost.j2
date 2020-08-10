@@ -1,0 +1,12 @@
+server {
+    listen {{ port }}
+    server_name {{ server }}
+
+    {% for item in location %}
+    location /{{ item.context }} {
+        proxy_pass http://{{ item.upstream }}
+    }
+
+    {% endfor %}
+
+}

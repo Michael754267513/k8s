@@ -41,4 +41,5 @@ func (r *NameSpaceController) List() {
 ERROR:
 	initConfig.Logger(err)
 }
+
 func (r *NameSpaceController) Delete() {}

@@ -3,6 +3,7 @@ package router
 import (
 	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/net/ghttp"
+	DevOps "k8s/devops"
 	Deploy "k8s/kubernetes/deployment"
 	Namespace "k8s/kubernetes/namespace"
 	Pod "k8s/kubernetes/pod"
@@ -31,5 +32,10 @@ func init() {
 		group.ALL("/service", new(Service.ServiceController))
 		// namespace 处理段
 		group.ALL("/namespace", new(Namespace.NameSpaceController))
+	})
+	s.Group("/handpay", func(group *ghttp.RouterGroup) {
+		group.Middleware(MiddlewareCORS) // 跨域处理
+		group.REST("/devops/kubernetes", new(DevOps.DevOpsController))
+		group.REST("/devops/build", new(DevOps.BuildController))
 	})
 }
