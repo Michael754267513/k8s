@@ -7,7 +7,7 @@ type RequestBody struct {
 
 type NodeList struct {
 	Port int    `json:"port"`
-	Host string `json:"host"`
+	Name string `json:"host"`
 }
 
 type Metadata struct {

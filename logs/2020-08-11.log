@@ -1,0 +1,196 @@
+2020-08-11 10:37:04.940 61564: http server started listening on [:80]
+
+  SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | DELETE | /handpay/devops/build         | k8s/devops.(*BuildController).Delete                     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | GET    | /handpay/devops/build         | k8s/devops.(*BuildController).Get                        | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PATCH  | /handpay/devops/build         | k8s/devops.(*BuildController).Patch                      | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | POST   | /handpay/devops/build         | k8s/devops.(*BuildController).Post                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PUT    | /handpay/devops/build         | k8s/devops.(*BuildController).Put                        | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | DELETE | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Delete                    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | GET    | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Get                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PATCH  | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Patch                     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | POST   | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Post                      | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PUT    | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Put                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/create | k8s/kubernetes/deployment.(*DeployMentController).Create | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/delete | k8s/kubernetes/deployment.(*DeployMentController).Delete | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/list   | k8s/kubernetes/deployment.(*DeployMentController).List   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/delete  | k8s/kubernetes/namespace.(*NameSpaceController).Delete   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/list          | k8s/kubernetes/pod.(*podws.PodController).List           | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/create    | k8s/kubernetes/service.(*ServiceController).Create       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/delete    | k8s/kubernetes/service.(*ServiceController).Delete       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/update    | k8s/kubernetes/service.(*ServiceController).Update       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+
+2020-08-11 10:44:47.118 44368: http server started listening on [:80]
+
+  SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | DELETE | /handpay/devops/build         | k8s/devops.(*BuildController).Delete                     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | GET    | /handpay/devops/build         | k8s/devops.(*BuildController).Get                        | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PATCH  | /handpay/devops/build         | k8s/devops.(*BuildController).Patch                      | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | POST   | /handpay/devops/build         | k8s/devops.(*BuildController).Post                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PUT    | /handpay/devops/build         | k8s/devops.(*BuildController).Put                        | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | DELETE | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Delete                    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | GET    | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Get                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PATCH  | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Patch                     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | POST   | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Post                      | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PUT    | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Put                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/create | k8s/kubernetes/deployment.(*DeployMentController).Create | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/delete | k8s/kubernetes/deployment.(*DeployMentController).Delete | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/list   | k8s/kubernetes/deployment.(*DeployMentController).List   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/delete  | k8s/kubernetes/namespace.(*NameSpaceController).Delete   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/list          | k8s/kubernetes/pod.(*podws.PodController).List           | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/create    | k8s/kubernetes/service.(*ServiceController).Create       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/delete    | k8s/kubernetes/service.(*ServiceController).Delete       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/update    | k8s/kubernetes/service.(*ServiceController).Update       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+
+2020-08-11 10:46:10.759 139024: http server started listening on [:80]
+
+  SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | DELETE | /handpay/devops/build         | k8s/devops.(*BuildController).Delete                     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | GET    | /handpay/devops/build         | k8s/devops.(*BuildController).Get                        | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PATCH  | /handpay/devops/build         | k8s/devops.(*BuildController).Patch                      | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | POST   | /handpay/devops/build         | k8s/devops.(*BuildController).Post                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PUT    | /handpay/devops/build         | k8s/devops.(*BuildController).Put                        | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | DELETE | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Delete                    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | GET    | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Get                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PATCH  | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Patch                     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | POST   | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Post                      | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PUT    | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Put                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/create | k8s/kubernetes/deployment.(*DeployMentController).Create | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/delete | k8s/kubernetes/deployment.(*DeployMentController).Delete | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/list   | k8s/kubernetes/deployment.(*DeployMentController).List   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/delete  | k8s/kubernetes/namespace.(*NameSpaceController).Delete   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/list          | k8s/kubernetes/pod.(*podws.PodController).List           | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/create    | k8s/kubernetes/service.(*ServiceController).Create       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/delete    | k8s/kubernetes/service.(*ServiceController).Delete       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/update    | k8s/kubernetes/service.(*ServiceController).Update       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+
+2020-08-11 10:51:35.965 138208: http server started listening on [:80]
+
+  SERVER  | DOMAIN  | ADDRESS | METHOD |             ROUTE             |                         HANDLER                          |      MIDDLEWARE        
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | DELETE | /handpay/devops/build         | k8s/devops.(*BuildController).Delete                     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | GET    | /handpay/devops/build         | k8s/devops.(*BuildController).Get                        | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PATCH  | /handpay/devops/build         | k8s/devops.(*BuildController).Patch                      | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | POST   | /handpay/devops/build         | k8s/devops.(*BuildController).Post                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PUT    | /handpay/devops/build         | k8s/devops.(*BuildController).Put                        | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | DELETE | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Delete                    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | GET    | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Get                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PATCH  | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Patch                     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | POST   | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Post                      | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | PUT    | /handpay/devops/kubernetes    | k8s/devops.(*DevOpsController).Put                       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/create | k8s/kubernetes/deployment.(*DeployMentController).Create | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/delete | k8s/kubernetes/deployment.(*DeployMentController).Delete | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/list   | k8s/kubernetes/deployment.(*DeployMentController).List   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/deployment/update | k8s/kubernetes/deployment.(*DeployMentController).Update | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/delete  | k8s/kubernetes/namespace.(*NameSpaceController).Delete   | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/namespace/list    | k8s/kubernetes/namespace.(*NameSpaceController).List     | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/list          | k8s/kubernetes/pod.(*podws.PodController).List           | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/pod/websocket     | k8s/kubernetes/pod.(*podws.PodWSController).Websocket    | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/create    | k8s/kubernetes/service.(*ServiceController).Create       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/delete    | k8s/kubernetes/service.(*ServiceController).Delete       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/list      | k8s/kubernetes/service.(*ServiceController).List         | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+  default | default | :80     | ALL    | /kubernetes/service/update    | k8s/kubernetes/service.(*ServiceController).Update       | router.MiddlewareCORS  
+|---------|---------|---------|--------|-------------------------------|----------------------------------------------------------|-----------------------|
+

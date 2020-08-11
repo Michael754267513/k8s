@@ -14,8 +14,33 @@ type DevOpsController struct {
 }
 
 func (r *DevOpsController) Get() {
-	r.Response.WriteJson("GET")
 
+	var (
+		//data *gjson.Json
+		address string
+		body    RequestBody
+		err     error
+	)
+
+	data := r.Request.GetBody()
+	if err = json.Unmarshal(data, &body); err != nil {
+		goto ERROR
+	}
+	if body.Kind == "Domain" {
+		address, err = DomainGetController(body.Metadata.Namespace, body.Metadata.Name)
+		if err == nil && address != "None" {
+			r.Response.WriteJson(address)
+			return
+		}
+		r.Response.Write("address is nil")
+		goto ERROR
+	}
+
+ERROR:
+	fmt.Println(err)
+	r.Response.Status = 500
+	r.Response.Write(err)
+	return
 }
 
 func (r *DevOpsController) Post() {
@@ -28,24 +53,18 @@ func (r *DevOpsController) Post() {
 
 	data := r.Request.GetBody()
 	if err = json.Unmarshal(data, &body); err != nil {
-		r.Response.Status = 500
-		r.Response.Write(err)
-		return
+		goto ERROR
 	}
 	// 判断 namespace 是否存在
 	IsExistNamespace(body.Metadata.Namespace)
 	if body.Kind == "Redis" || body.Kind == "Zookeeper" {
 		if filename, err := SaveFile(r.Request.GetBody()); err != nil {
-			r.Response.Status = 500
-			r.Response.Write(err)
-			return
+			goto ERROR
 		} else {
 			cmd := "kubectl apply -f " + filename
 			f, err := exec.Command("sh", "-c", cmd).Output()
 			if err != nil {
-				r.Response.Status = 500
-				r.Response.Write(err)
-				return
+				goto ERROR
 			} else {
 				r.Response.Write(f)
 				return
@@ -58,19 +77,23 @@ func (r *DevOpsController) Post() {
 			meta SpbootMeta
 		)
 		if err := json.Unmarshal(r.Request.GetBody(), &meta); err != nil {
-			r.Response.Status = 500
-			r.Response.Write(err)
+			goto ERROR
 		} else {
 			if err = SpbootController(meta); err != nil {
-				r.Response.Status = 500
-				r.Response.Write(err)
-				return
+				goto ERROR
 			}
 
 		}
 
 	}
 	r.Response.Write(err)
+	return
+ERROR:
+	fmt.Println(err)
+	r.Response.Status = 500
+	r.Response.Write(err)
+	return
+
 }
 
 func (r *DevOpsController) Delete() {

@@ -8,7 +8,7 @@ import (
 )
 
 func SaveFile(data []byte) (string, error) {
-	filename := "yaml/" + "k8s." + guuid.New().String() + ".yaml"
+	filename := "/tmp/" + "k8s." + guuid.New().String() + ".yaml"
 	err := ioutil.WriteFile(filename, data, os.ModeAppend)
 	if err != nil {
 		return filename, err

@@ -125,7 +125,7 @@ func SpbootDeployment(meta SpbootMeta) (deployment *appsv1.Deployment, err error
 							Image: meta.Spec.Image,
 							Ports: []apiv1.ContainerPort{
 								{
-									Name:          meta.Metadata.Name,
+									Name:          "http",
 									Protocol:      apiv1.ProtocolTCP,
 									ContainerPort: 8000,
 								},
@@ -157,6 +157,7 @@ func SpbootService(meta SpbootMeta) (service *apiv1.Service, err error) {
 	var (
 		Ports []apiv1.ServicePort
 	)
+
 	Ports = append(Ports, apiv1.ServicePort{
 		Name:     meta.Metadata.Name,
 		Protocol: "TCP",
