@@ -180,3 +180,17 @@ func SpbootService(meta SpbootMeta) (service *apiv1.Service, err error) {
 	}
 	return
 }
+
+func SpbootGet(meta SpbootMeta) (service *apiv1.Service, deployment *appsv1.Deployment, err error) {
+
+	var (
+		client *kubernetes.Clientset
+	)
+	if client, err = initConfig.InitClient(); err != nil {
+		return
+	}
+
+	service, err = client.CoreV1().Services(meta.Metadata.Namespace).Get(meta.Metadata.Name, metav1.GetOptions{})
+	deployment, err = client.AppsV1().Deployments(meta.Metadata.Namespace).Get(meta.Metadata.Name, metav1.GetOptions{})
+	return
+}

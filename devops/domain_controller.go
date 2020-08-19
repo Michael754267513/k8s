@@ -7,19 +7,19 @@ import (
 	initConfig "k8s/config"
 )
 
-func DomainGetController(namespace, name string) (address string, err error) {
+func DomainGetController(namespace, name string) (svc *v1.Service, err error) {
 	var (
 		client *kubernetes.Clientset
-		svc    *v1.Service
 	)
 	// 固定svc
 	name = "prop-server"
 	if client, err = initConfig.InitClient(); err != nil {
 		return
 	}
+
 	if svc, err = client.CoreV1().Services(namespace).Get(name, metav1.GetOptions{}); err != nil {
 		return
 	}
-	address = svc.Spec.ClusterIP
+
 	return
 }

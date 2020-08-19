@@ -7,6 +7,8 @@ import (
 
 	//"github.com/gogf/gf/encoding/gjson"
 	"github.com/gogf/gf/frame/gmvc"
+	appsv1 "k8s.io/api/apps/v1"
+	v1 "k8s.io/api/core/v1"
 )
 
 type DevOpsController struct {
@@ -17,23 +19,65 @@ func (r *DevOpsController) Get() {
 
 	var (
 		//data *gjson.Json
-		address string
-		body    RequestBody
-		err     error
+		body RequestBody
+		err  error
 	)
 
 	data := r.Request.GetBody()
 	if err = json.Unmarshal(data, &body); err != nil {
 		goto ERROR
 	}
+
 	if body.Kind == "Domain" {
-		address, err = DomainGetController(body.Metadata.Namespace, body.Metadata.Name)
-		if err == nil && address != "None" {
-			r.Response.WriteJson(address)
+		var (
+			svc *v1.Service
+		)
+		if svc, err = PropGetController(body.Metadata.Namespace, body.Metadata.Name); err != nil {
+			goto ERROR
+		}
+		r.Response.WriteJson(svc)
+		return
+	}
+
+	if body.Kind == "Redis" {
+	}
+
+	if body.Kind == "Zookeeper" {
+	}
+
+	if body.Kind == "Spboot" {
+		var (
+			meta       SpbootMeta
+			service    *v1.Service
+			deployment *appsv1.Deployment
+		)
+		if err := json.Unmarshal(r.Request.GetBody(), &meta); err != nil {
+			goto ERROR
+		} else {
+			service, deployment, err = SpbootGet(meta)
+			r.Response.WriteJson(service)
+			r.Response.WriteJson(deployment)
+			if err != nil {
+				goto ERROR
+			}
 			return
 		}
-		r.Response.Write("address is nil")
-		goto ERROR
+	}
+
+	if body.Kind == "Hservice" {
+		var (
+			meta    SVCMeta
+			service *v1.Service
+		)
+		if err = json.Unmarshal(r.Request.GetBody(), &meta); err != nil {
+			goto ERROR
+		} else {
+			if service, err = SVCget(meta); err != nil {
+				goto ERROR
+			}
+			r.Response.WriteJson(service)
+			return
+		}
 	}
 
 ERROR:
@@ -84,9 +128,35 @@ func (r *DevOpsController) Post() {
 			}
 
 		}
-
+		r.Response.WriteJson(err)
+		return
 	}
-	r.Response.Write(err)
+
+	if body.Kind == "Hservice" {
+		var (
+			meta SVCMeta
+		)
+		if err = json.Unmarshal(r.Request.GetBody(), &meta); err != nil {
+			goto ERROR
+		} else {
+			if err = SVCcontroller(meta); err != nil {
+				goto ERROR
+			}
+		}
+		r.Response.WriteJson(err)
+		return
+	}
+
+	if body.Kind == "Prop" {
+		if err = PropController(body.Metadata.Namespace); err != nil {
+			goto ERROR
+		}
+		r.Response.WriteJson(err)
+		return
+	}
+
+	r.Response.Status = 500
+	r.Response.Write("resource not found")
 	return
 ERROR:
 	fmt.Println(err)
@@ -109,6 +179,7 @@ func (r *DevOpsController) Delete() {
 	if err = json.Unmarshal(data, &body); err != nil {
 		goto ERROR
 	}
+
 	if body.Kind == "Redis" || body.Kind == "Zookeeper" {
 		if filename, err = SaveFile(r.Request.GetBody()); err != nil {
 			goto ERROR
@@ -141,6 +212,7 @@ func (r *DevOpsController) Delete() {
 
 	}
 	r.Response.Write(err)
+	return
 ERROR:
 	fmt.Println(err)
 	r.Response.Status = 500
