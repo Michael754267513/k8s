@@ -29,6 +29,7 @@ type Service struct {
 
 func (r *ServiceController) List() {
 	namespace := r.Request.GetString("namespace")
+	name := r.Request.GetString("name")
 	var (
 		clientset      *kubernetes.Clientset
 		servicelist    *core_v1.ServiceList
@@ -39,7 +40,7 @@ func (r *ServiceController) List() {
 	if clientset, err = initConfig.InitClient(); err != nil {
 		goto ERROR
 	}
-	if servicelist, err = clientset.CoreV1().Services(namespace).List(meta_v1.ListOptions{}); err != nil {
+	if servicelist, err = clientset.CoreV1().Services(namespace).List(meta_v1.ListOptions{LabelSelector: name}); err != nil {
 		goto ERROR
 	}
 	for _, v := range servicelist.Items {

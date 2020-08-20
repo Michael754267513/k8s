@@ -31,7 +31,7 @@ func GetDockerFile(meta BuildMeta) (path string, err error) {
 	var (
 		data []byte
 	)
-	path = "yaml/" + guuid.New().String()
+	path = "tmp/" + guuid.New().String()
 	// docker file 字段
 	baseimage := "FROM harbor.devops.hpay/base/hjdk:" + meta.Spec.JDK + "\r\n"
 	copyimage := "COPY " + meta.Spec.PKG + " /opt/spboot/" + meta.Spec.PKG + "\r\n"

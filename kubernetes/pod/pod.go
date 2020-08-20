@@ -26,6 +26,7 @@ type Pods struct {
 
 func (r *PodController) List() {
 	namespace := r.Request.GetString("namespace")
+	name := r.Request.GetString("name")
 	var (
 		clientset  *kubernetes.Clientset
 		podsList   *core_v1.PodList
@@ -36,7 +37,7 @@ func (r *PodController) List() {
 	if clientset, err = initConfig.InitClient(); err != nil {
 		goto ERROR
 	}
-	if podsList, err = clientset.CoreV1().Pods(namespace).List(meta_v1.ListOptions{}); err != nil {
+	if podsList, err = clientset.CoreV1().Pods(namespace).List(meta_v1.ListOptions{LabelSelector: name}); err != nil {
 		goto ERROR
 	}
 	// 遍历获取到的所有pod添加到pods结构体内，然后append到pods数组

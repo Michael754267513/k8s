@@ -108,6 +108,7 @@ func SpbootDeployment(meta SpbootMeta) (deployment *appsv1.Deployment, err error
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      meta.Metadata.Name,
 			Namespace: meta.Metadata.Namespace,
+			Labels:    GetLables(meta),
 		},
 		Spec: appsv1.DeploymentSpec{
 			Replicas: &replicas,
@@ -170,11 +171,14 @@ func SpbootService(meta SpbootMeta) (service *apiv1.Service, err error) {
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      meta.Metadata.Name,
 			Namespace: meta.Metadata.Namespace,
+			Labels:    GetLables(meta),
 		},
 		Spec: apiv1.ServiceSpec{
 			Selector: GetLables(meta),
-			Type:     apiv1.ServiceTypeClusterIP,
-			Ports:    Ports,
+			//Type:     apiv1.ServiceTypeClusterIP,
+			Type:                  apiv1.ServiceTypeNodePort,
+			ExternalTrafficPolicy: apiv1.ServiceExternalTrafficPolicyTypeLocal,
+			Ports:                 Ports,
 			//SessionAffinity: "ClientIP",
 		},
 	}

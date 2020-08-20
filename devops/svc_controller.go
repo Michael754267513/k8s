@@ -25,10 +25,6 @@ func SVCcontroller(meta SVCMeta) (err error) {
 					return
 				}
 			}
-		} else {
-			if _, err = client.CoreV1().Services(meta.Metadata.Namespace).Update(SVCservice(meta)); err != nil {
-				return
-			}
 		}
 	}
 
@@ -87,6 +83,10 @@ func SVCendpoints(meta SVCMeta) (ep *apiv1.Endpoints) {
 		ObjectMeta: metav1.ObjectMeta{
 			Namespace: meta.Metadata.Namespace,
 			Name:      meta.Metadata.Name,
+			Labels: map[string]string{
+				"serviceName":      meta.Metadata.Name,
+				meta.Metadata.Name: meta.Metadata.Name,
+			},
 		},
 		Subsets: subset,
 	}
@@ -118,6 +118,10 @@ func SVCservice(meta SVCMeta) (service *apiv1.Service) {
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      meta.Metadata.Name,
 				Namespace: meta.Metadata.Namespace,
+				Labels: map[string]string{
+					"serviceName":      meta.Metadata.Name,
+					meta.Metadata.Name: meta.Metadata.Name,
+				},
 			},
 			Spec: apiv1.ServiceSpec{
 				Selector: map[string]string{
@@ -136,6 +140,10 @@ func SVCservice(meta SVCMeta) (service *apiv1.Service) {
 			ObjectMeta: metav1.ObjectMeta{
 				Name:      meta.Metadata.Name,
 				Namespace: meta.Metadata.Namespace,
+				Labels: map[string]string{
+					"serviceName":      meta.Metadata.Name,
+					meta.Metadata.Name: meta.Metadata.Name,
+				},
 			},
 			Spec: apiv1.ServiceSpec{
 				Type:  apiv1.ServiceTypeClusterIP,

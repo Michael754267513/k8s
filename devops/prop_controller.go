@@ -46,6 +46,9 @@ func PropDeployment(namespace string) (deployment *appsv1.Deployment) {
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      "prop-server",
 			Namespace: namespace,
+			Labels: map[string]string{
+				"prop-server": "prop-server",
+			},
 		},
 		Spec: appsv1.DeploymentSpec{
 			Replicas: &replicas,
@@ -101,6 +104,9 @@ func PropService(namespace string) (service *v1.Service) {
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      "prop-server",
 			Namespace: namespace,
+			Labels: map[string]string{
+				"prop-server": "prop-server",
+			},
 		},
 		Spec: v1.ServiceSpec{
 			Selector: map[string]string{

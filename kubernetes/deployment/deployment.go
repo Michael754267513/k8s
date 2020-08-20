@@ -49,6 +49,7 @@ type Deploys struct {
 
 func (r *DeployMentController) List() {
 	namespace := r.Request.GetString("namespace")
+	name := r.Request.GetString("name")
 	var (
 		clientset     *kubernetes.Clientset
 		deploylist    *apps_v1.DeploymentList
@@ -56,10 +57,14 @@ func (r *DeployMentController) List() {
 		deploy        Deploys
 		err           error
 	)
+
 	if clientset, err = initConfig.InitClient(); err != nil {
 		goto ERROR
 	}
-	if deploylist, err = clientset.AppsV1().Deployments(namespace).List(meta_v1.ListOptions{}); err != nil {
+
+	if deploylist, err = clientset.AppsV1().Deployments(namespace).List(meta_v1.ListOptions{
+		LabelSelector: name,
+	}); err != nil {
 		goto ERROR
 	}
 	// 获取deployment 相关数据
