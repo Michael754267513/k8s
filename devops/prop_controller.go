@@ -61,10 +61,12 @@ func PropDeployment(namespace string) (deployment *appsv1.Deployment) {
 					},
 				},
 				Spec: v1.PodSpec{
+
 					Containers: []v1.Container{
 						{
-							Name:  "prop-server",
-							Image: "nginx",
+							Name:            "prop-server",
+							ImagePullPolicy: v1.PullAlways,
+							Image:           "harbor.devops.hpay/it/nginx:142",
 							Ports: []v1.ContainerPort{
 								{
 									Name:          "http",

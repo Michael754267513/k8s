@@ -28,6 +28,11 @@ func (r *DevOpsController) Get() {
 		goto ERROR
 	}
 
+	if body.Metadata.Namespace == "" {
+		r.Response.Write("namespace is not null!")
+		goto ERROR
+	}
+
 	if body.Kind == "Domain" {
 		var (
 			svc *v1.Service
@@ -97,6 +102,10 @@ func (r *DevOpsController) Post() {
 
 	data := r.Request.GetBody()
 	if err = json.Unmarshal(data, &body); err != nil {
+		goto ERROR
+	}
+	if body.Metadata.Namespace == "" {
+		r.Response.Write("namespace is not null!")
 		goto ERROR
 	}
 	// 判断 namespace 是否存在

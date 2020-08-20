@@ -25,6 +25,10 @@ func SVCcontroller(meta SVCMeta) (err error) {
 					return
 				}
 			}
+		} else {
+			if _, err = client.CoreV1().Services(meta.Metadata.Namespace).Update(SVCservice(meta)); err != nil {
+				return
+			}
 		}
 	}
 
@@ -43,6 +47,10 @@ func SVCcontroller(meta SVCMeta) (err error) {
 				}
 			}
 
+		} else {
+			if _, err = client.CoreV1().Endpoints(meta.Metadata.Namespace).Update(SVCendpoints(meta)); err != nil {
+				return
+			}
 		}
 	}
 
@@ -65,7 +73,7 @@ func SVCendpoints(meta SVCMeta) (ep *apiv1.Endpoints) {
 			continue
 		}
 		ports = append(ports, apiv1.EndpointPort{
-			//Name:     meta.Metadata.Name+string(v),
+			Name: meta.Metadata.Name + gconv.String(v),
 			Port: v,
 		})
 	}
