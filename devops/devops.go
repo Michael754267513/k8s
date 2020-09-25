@@ -85,6 +85,10 @@ func (r *DevOpsController) Get() {
 		}
 	}
 
+	if body.Kind == "Env" {
+		// 获取
+	}
+
 ERROR:
 	fmt.Println(err)
 	r.Response.Status = 500
@@ -101,9 +105,11 @@ func (r *DevOpsController) Post() {
 	)
 
 	data := r.Request.GetBody()
+	fmt.Println(string(data))
 	if err = json.Unmarshal(data, &body); err != nil {
 		goto ERROR
 	}
+
 	if body.Metadata.Namespace == "" {
 		r.Response.Write("namespace is not null!")
 		goto ERROR
@@ -162,6 +168,26 @@ func (r *DevOpsController) Post() {
 		}
 		r.Response.WriteJson(err)
 		return
+	}
+
+	if body.Kind == "Hornetq" {
+		var (
+			meta HornetqMeta
+		)
+		if err = json.Unmarshal(r.Request.GetBody(), &meta); err != nil {
+			goto ERROR
+		} else {
+			if err = HornetqController(meta); err != nil {
+				goto ERROR
+			}
+		}
+		r.Response.WriteJson(err)
+		return
+
+	}
+
+	if body.Kind == "Env" {
+		// 新建环境
 	}
 
 	r.Response.Status = 500

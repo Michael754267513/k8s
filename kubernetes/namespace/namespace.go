@@ -42,4 +42,83 @@ ERROR:
 	initConfig.Logger(err)
 }
 
-func (r *NameSpaceController) Delete() {}
+func (r *NameSpaceController) Delete() {
+	namespace := r.Request.GetString("namespace")
+
+	var (
+		clientset *kubernetes.Clientset
+		err       error
+	)
+	if clientset, err = initConfig.InitClient(); err != nil {
+		goto ERROR
+	}
+
+	err = clientset.CoreV1().Namespaces().Delete(namespace, &meta_v1.DeleteOptions{})
+	if err != nil {
+		goto ERROR
+	}
+
+	r.Response.WriteJson("")
+	return
+ERROR:
+	initConfig.Logger(err)
+	r.Response.Status = 500
+	r.Response.Write(err)
+}
+
+func (r *NameSpaceController) GET() {
+	namespace := r.Request.GetString("namespace")
+
+	var (
+		clientset     *kubernetes.Clientset
+		namespaceList *core_v1.Namespace
+		err           error
+	)
+	if clientset, err = initConfig.InitClient(); err != nil {
+		goto ERROR
+	}
+
+	namespaceList, err = clientset.CoreV1().Namespaces().Get(namespace, meta_v1.GetOptions{})
+	if err != nil {
+		goto ERROR
+	}
+
+	r.Response.WriteJson(namespaceList)
+	return
+ERROR:
+	initConfig.Logger(err)
+	r.Response.Status = 500
+	r.Response.Write(err)
+}
+
+func (r *NameSpaceController) POST() {
+	namespace := r.Request.GetString("namespace")
+
+	var (
+		clientset     *kubernetes.Clientset
+		namespaceList *core_v1.Namespace
+		err           error
+	)
+	if clientset, err = initConfig.InitClient(); err != nil {
+		goto ERROR
+	}
+
+	namespaceList, err = clientset.CoreV1().Namespaces().Create(&core_v1.Namespace{
+
+		ObjectMeta: meta_v1.ObjectMeta{
+			Name:      namespace,
+			Namespace: namespace,
+		},
+	})
+	if err != nil {
+		goto ERROR
+	}
+
+	r.Response.WriteJson(namespaceList)
+	return
+ERROR:
+	initConfig.Logger(err)
+	r.Response.Status = 500
+	r.Response.Write(err)
+
+}

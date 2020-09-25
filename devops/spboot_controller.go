@@ -122,8 +122,9 @@ func SpbootDeployment(meta SpbootMeta) (deployment *appsv1.Deployment, err error
 				Spec: apiv1.PodSpec{
 					Containers: []apiv1.Container{
 						{
-							Name:  meta.Metadata.Name,
-							Image: meta.Spec.Image,
+							Name:            meta.Metadata.Name,
+							ImagePullPolicy: apiv1.PullAlways,
+							Image:           meta.Spec.Image,
 							Ports: []apiv1.ContainerPort{
 								{
 									Name:          "http",
@@ -151,6 +152,30 @@ func SpbootDeployment(meta SpbootMeta) (deployment *appsv1.Deployment, err error
 	//volumeMount = append(volumeMount, AddVolumeMount(meta.ServiceName, meta.LogDir, "hostpath"))
 	//deployment.Spec.Template.Spec.Volumes = volume
 	//deployment.Spec.Template.Spec.Containers[0].VolumeMounts = volumeMount
+	deployment.Spec.Template.Spec.Containers[0].LivenessProbe = &apiv1.Probe{
+		Handler: apiv1.Handler{
+			TCPSocket: &apiv1.TCPSocketAction{
+				Port: intstr.FromInt(8000),
+			},
+		},
+		InitialDelaySeconds: 30, // 容器启动多长时间开始使用Liveness探针
+		TimeoutSeconds:      3,
+		PeriodSeconds:       10,
+		SuccessThreshold:    1,
+		FailureThreshold:    3,
+	}
+	deployment.Spec.Template.Spec.Containers[0].ReadinessProbe = &apiv1.Probe{
+		Handler: apiv1.Handler{
+			TCPSocket: &apiv1.TCPSocketAction{
+				Port: intstr.FromInt(8000),
+			},
+		},
+		InitialDelaySeconds: 30, // 容器启动多长时间开始使用Readiness探针
+		TimeoutSeconds:      3,
+		PeriodSeconds:       10,
+		SuccessThreshold:    1,
+		FailureThreshold:    3,
+	}
 	return
 }
 

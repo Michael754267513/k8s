@@ -64,7 +64,6 @@ func PropDeployment(namespace string) (deployment *appsv1.Deployment) {
 					},
 				},
 				Spec: v1.PodSpec{
-
 					Containers: []v1.Container{
 						{
 							Name:            "prop-server",
