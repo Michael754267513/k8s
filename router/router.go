@@ -1,6 +1,10 @@
 package router
 
 import (
+	"log"
+	"net/http"
+	_ "net/http/pprof"
+
 	"github.com/gogf/gf/frame/g"
 	"github.com/gogf/gf/net/ghttp"
 	DevOps "k8s/devops"
@@ -31,11 +35,14 @@ func init() {
 		// service 处理段
 		group.ALL("/service", new(Service.ServiceController))
 		// namespace 处理段
-		group.ALL("/namespace", new(Namespace.NameSpaceController))
+		group.REST("/namespace", new(Namespace.NameSpaceController))
 	})
 	s.Group("/handpay", func(group *ghttp.RouterGroup) {
 		group.Middleware(MiddlewareCORS) // 跨域处理
 		group.REST("/devops/kubernetes", new(DevOps.DevOpsController))
 		group.REST("/devops/build", new(DevOps.BuildController))
 	})
+	go func() {
+		log.Println(http.ListenAndServe("0.0.0.0:9999", nil))
+	}()
 }
